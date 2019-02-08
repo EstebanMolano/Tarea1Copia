@@ -22,24 +22,27 @@ public class Profile extends AppCompatActivity {
         root_profile = findViewById(R.id.profile_root);
         btn_salir_profile= findViewById(R.id.btn_salir_profile);
 
-        root_profile.setOnTouchListener(new View.OnTouchListener(){
+        root_profile.setOnTouchListener(new View.OnTouchListener() {
+
+            float Xini = 0;
+
+            float Yini = 0;
+
             @Override
-            public boolean onTouch(View v, MotionEvent event){
-                float Xini=0;
-                float Yini=0;
+            public boolean onTouch(View v, MotionEvent event) {
+
                 switch(event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        btn_salir_profile.setText(event.getX() + "," +event.getY());
                         Xini=event.getX();
+                        Yini=event.getY();
+                        btn_salir_profile.setText("DOWN: " + event.getX() + "," +event.getY());
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        btn_salir_profile.setText(event.getX() + "," +event.getY());
+                        btn_salir_profile.setText("MOVE: " + event.getX() + "," +event.getY());
                         break;
                     case MotionEvent.ACTION_UP:
-
-
+                        float deltax =event.getX()-Xini;
                         Yini=event.getX();
-                        float deltax =Yini-Xini;
                         if(deltax>500){
                             Intent i = new Intent(Profile.this,MainProfile.class
                             );
@@ -50,11 +53,11 @@ public class Profile extends AppCompatActivity {
                             finish();
                         }
 
-                        btn_salir_profile.setText(event.getX() + "," +event.getY());
+                        btn_salir_profile.setText("DELTA: "+deltax);
                         break;
                 }
 
-                return false;
+                return true;
             }
         });
 
