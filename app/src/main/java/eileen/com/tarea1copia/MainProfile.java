@@ -23,6 +23,7 @@ public class MainProfile extends FragmentActivity {
          fragmentA = new FragmentA();
          fragmentB = new FragmentB();
         fragmentC = new FragmentC();
+        fragmentC = new FragmentC();
 
         BottomNavigationView naviagtion = findViewById(R.id.navigation);
         naviagtion.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
